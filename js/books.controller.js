@@ -71,20 +71,20 @@ function onReadBook(bookId) {
     const book = getBookById(bookId)
     const elReadModal = document.querySelector('.read-modal')
     elReadModal.querySelector('h3').innerText = book.name
-    const strImgHTML = `<img src="${book.imgUrl}" alt="book by ${book.name}"></img>`
-    elReadModal.querySelector('.img-container').innerHTML = strImgHTML
+    elReadModal.querySelector('img').src = book.imgUrl
+    elReadModal.querySelector('img').alt = `book by ${book.name}`
     elReadModal.querySelector('.price-container span').innerText = book.price
     elReadModal.classList.add('open-modal')
-    renderProperty(book)
+    renderRating(book)
 }
 
-function renderProperty(book) {
-    const elProperty = document.querySelector('.property-container')
+function renderRating(book) {
+    const elRating = document.querySelector('.rating-container')
     const strHTML = `
-                <button class="minus" onclick="onPropBtn(this, ${book.id})">-</button>
-                <span class="property">${book.property}</span>
-                <button class="plus" onclick="onPropBtn(this, ${book.id})">+</button>`
-    elProperty.innerHTML = strHTML
+                <button class="minus" onclick="onRateBtn(this, ${book.id})">-</button>
+                <span class="rating">${book.rating}</span>
+                <button class="plus" onclick="onRateBtn(this, ${book.id})">+</button>`
+    elRating.innerHTML = strHTML
 }
 
 function onCloseModal() {
@@ -93,12 +93,12 @@ function onCloseModal() {
 
 }
 
-function onPropBtn(el, bookId) {
+function onRateBtn(el, bookId) {
     const book = getBookById(bookId)
     const operator = el.innerText
     if (operator === '+') {
-        if (book.property === 10) return
-    } else if (book.property === 0) return
-    var updateBook = setProperty(operator, bookId)
-    renderProperty(updateBook)
+        if (book.rating === 10) return
+    } else if (book.rating === 0) return
+    var updateBook = setRating(operator, bookId)
+    renderRating(updateBook)
 }

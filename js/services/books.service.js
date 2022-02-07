@@ -15,10 +15,10 @@ function _creatBooks() {
     var books = loadFromStorage(STORAGE_KEY)
     if (!books || !books.length) {
         books = [
-            _creatBook('aaa', 10),
-            _creatBook('bbb', 15),
-            _creatBook('ccc', 20),
-            _creatBook('ddd', 10)
+            _creatBook('Bereshit', 10),
+            _creatBook('Shmot', 15),
+            _creatBook('Vaykra', 20),
+            _creatBook('Book', 10)
         ]
     }
     gBooks = books
@@ -30,8 +30,8 @@ function _creatBook(name, price) {
         id: getRandomIntInclusive(0, 10000),
         name,
         price,
-        imgUrl: `"../images/${name}.jpg"`,
-        property: 0
+        imgUrl: `../images/${name}.jpg`,
+        rating: 0
     }
     return book
 }
@@ -59,10 +59,9 @@ function updateBook(bookId, newPrice){
     _saveBooksToStorage()
 }
 
-function setProperty(operator, bookId){
+function setRating(operator, bookId){
     var book = getBookById(bookId)
-    // console.log(book);
-    book.property += (operator==='+')? 1: -1;
+    book.rating += (operator==='+')? 1: -1;
     _saveBooksToStorage()
     return book
 }
