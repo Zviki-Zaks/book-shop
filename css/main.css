@@ -34,7 +34,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    text-shadow: 1px 1px 13px #000000;
+    text-shadow: 1px 1px 13px #2e4226;
 }
 
 .add-book {
@@ -169,4 +169,8 @@ img {
     top: 50%;
     transform: translate(-50%, -50%);
     transition: left 0.5s;
+}
+
+.rtl {
+    direction: rtl;
 }

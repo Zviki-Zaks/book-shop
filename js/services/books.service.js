@@ -3,15 +3,13 @@
 const STORAGE_KEY = 'booksDB'
 
 var gBooks
-_creatBooks()
-console.log(gBooks);
 
 
 function getBooks() {
     return gBooks
 }
 
-function _creatBooks() {
+function creatBooks() {
     var books = loadFromStorage(STORAGE_KEY)
     if (!books || !books.length) {
         books = [
@@ -30,7 +28,7 @@ function _creatBook(name, price) {
         id: getRandomIntInclusive(0, 10000),
         name,
         price,
-        imgUrl: `../images/${name}.jpg`,
+        imgUrl: `images/${name}.jpg`,
         rating: 0
     }
     return book
